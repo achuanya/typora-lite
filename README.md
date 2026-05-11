@@ -46,6 +46,25 @@
 
 有兴趣可一起参与优化，交流群：747699182。
 
+#### 发布新版本
+
+仓库内提供了 `release.ps1` 自动发布脚本。发布前先把新版本文件放进本仓库，并在 `更新内容.md` 里添加对应版本说明，例如：
+
+```md
+## V5.6
+
+1. 新增内容...
+```
+
+然后在 PowerShell 中运行：
+
+```powershell
+cd C:\Users\Blaxisomu\Desktop\codex-work\git\CLAUDE-Typora
+.\release.ps1 -Version 5.6 -ZipPath "C:\Users\Blaxisomu\Desktop\codex-work\git\claude-Typora-5.6.zip"
+```
+
+脚本会自动提交当前改动、创建 `v5.6` 标签、推送到 GitHub，并创建 Release，附件默认命名为 `claude-theme-5.6.zip`。
+
 > [!TIP]
 >
 > 根目录建议为英文（这样能用得上我准备的英文书写体），建议缩放为120%（有奇效，喜欢的可以试一下）。
