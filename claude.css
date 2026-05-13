@@ -53,7 +53,7 @@ body {
 
     /* 对应claude话题搜索弹出窗口 */
     --file-search-list-font-color: #3d3d3a;
-    --file-search-list-bg-color: #ffffff;
+    --file-search-list-bg-color: #f8f8f3;
     --file-search-list-focus-bg-color: #f5f4ed;
 
     --button-bg-color: #e8e6dc;         /* new project按钮背景色 / Typora中的YAML背景色 */
@@ -187,10 +187,63 @@ body {
     border-radius: 10px;
 }
 
-/* 右键菜单栏的分割线 */
-.dropdown-menu .divider {
-    border-top-color: var(--border-color-15);
+/* 仅为一级右键菜单添加微入场动效，避免影响二级菜单 */
+#context-menu,
+#file-menu.show,
+#outline-menu.show {
+    transform-origin: top left;
+    animation: claude-context-menu-in 120ms cubic-bezier(.16, 1, .3, 1) both;
+    will-change: opacity, transform;
+    padding-top: 6px;
+    padding-bottom: 6px;
 }
+
+@keyframes claude-context-menu-in {
+    from {
+        opacity: 0;
+        transform: translateY(-4px) scale(.985);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* 底栏弹出面板从底部微入场 */
+.ty-show-spell-check #spell-check-panel,
+.ty-show-word-count #footer-word-count-info.dropdown-menu {
+    transform-origin: bottom right;
+    animation: claude-footer-menu-in 120ms cubic-bezier(.16, 1, .3, 1) both;
+    will-change: opacity, transform;
+}
+
+@keyframes claude-footer-menu-in {
+    from {
+        opacity: 0;
+        transform: translateY(4px) scale(.985);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #context-menu,
+    #file-menu.show,
+    #outline-menu.show,
+    .ty-show-spell-check #spell-check-panel,
+    .ty-show-word-count #footer-word-count-info.dropdown-menu {
+        animation: none;
+    }
+}
+
+/* 右键菜单栏的分割线 */
+/* .dropdown-menu .divider {
+    border-top-color: var(--border-color-15);
+} */
 
 /* ---------- 滚动条 ---------- */
 
@@ -1054,6 +1107,10 @@ a:hover {
     display: none !important;
 }
 
+#typora-sidebar-resizer:not(.dragging) .typora-sidebar-resizer-bar:hover {
+    background: none!important;
+}
+
 /* ---------- 7.1 侧边栏尺寸 ---------- */
 
 #typora-sidebar {
@@ -1098,13 +1155,19 @@ a:hover {
 /* 去除侧边栏底栏的边框 */
 #ty-sidebar-footer {
     border: none;
+    background: transparent !important;
     background-clip: padding-box;
 }
 
 #ty-sidebar-footer > div {
     border-bottom-left-radius: inherit;
     border-bottom-right-radius: inherit;
+    background: transparent !important;
     background-clip: padding-box;
+}
+
+#sidebar-files-menu {
+    background: var(--file-search-list-bg-color) !important;
 }
 
 #sidebar-new-file-btn {
@@ -1308,6 +1371,18 @@ a:hover {
 /* 激活项标题颜色 */
 .file-list-item.active {
     color: #756420!important;
+}
+
+#typora-sidebar #sidebar-loading-template {
+    background: #f8f8f3 !important;
+}
+
+#typora-sidebar #sidebar-loading-template .sidebar-loading {
+    background: #f8f8f3 !important;
+}
+
+#typora-sidebar #sidebar-loading-template .typora-search-spinner > div {
+    background-color: var(--LOGO-color) !important;
 }
 
 /* ---------- 7.6 文件树 ---------- */
@@ -1522,6 +1597,34 @@ a:hover {
 }
 
 /* 搜索列表背景 */
+#typora-sidebar.ty-on-search #file-library-search {
+    height: 100%;
+    padding-top: 20px;
+    overflow: hidden;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    background-color: var(--file-search-list-bg-color);
+}
+
+#typora-sidebar.ty-on-search #file-library-search-panel {
+    position: relative;
+    top: 0;
+    flex: 0 0 auto;
+    background-color: var(--file-search-list-bg-color);
+}
+
+#typora-sidebar.ty-on-search #file-library-search-input {
+    background-color: var(--file-search-list-bg-color);
+}
+
+#typora-sidebar.ty-on-search #file-library-search-result {
+    flex: 1 1 0;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: var(--file-search-list-bg-color);
+}
+
 .stopselect.dropmenu.sidebar-menu.open.active-tab-files.use-file-tree-style.ty-show-search.ty-on-search .sidebar-content {
     background-color: var(--file-search-list-bg-color);
 }
@@ -1545,11 +1648,13 @@ a:hover {
 
 /* 悬停 */
 .ty-search-item:hover {
-    background-color: var(--bg-color);
+    background-color: transparent;
+    color: var(--file-search-list-font-color);
 }
 
 .ty-search-item-line:hover {
-    background-color: var(--hover-color);
+    background-color: transparent;
+    color: inherit;
 }
 
 /* 点击后 */
@@ -1667,8 +1772,8 @@ a:hover {
     width: calc(100% - 1px) !important;
 }
 
-/* 将搜索框向下位移（包括文件搜索框和大纲搜索框） */
-#file-library-search-panel {
+/* 将大纲搜索框向下位移 */
+.ty-show-outline-filter #file-library-search-panel {
     top: 20px;
 }
 
