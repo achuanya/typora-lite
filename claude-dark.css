@@ -1620,14 +1620,14 @@ a:hover {
 }
 
 /* Prevent child overflow & protect hover hit targets */
-.file-tree-node > .file-node-children { overflow: hidden; }
+/* .file-tree-node > .file-node-children { overflow: hidden; }
 .file-tree-node > .file-node-background {
     pointer-events: none;
     box-sizing: border-box;
-    width: min(calc(100% - 1rem), calc(var(--sidebar-width) - 1rem));
+    width: min(calc(100% - 0.5rem), calc(var(--sidebar-width) - 0.5rem));
     border-radius: 0.5rem;
     margin: 0 0.5rem;
-}
+} */
 
 /* Staggered animation delays */
 .file-tree-node > .file-node-children > .file-library-node { --tree-delay: 0s; }
@@ -1683,14 +1683,29 @@ a:hover {
     --active-file-border-color: transparent;
 }
 
-/* Keep hover background transparent while preserving the active node highlight */
+/* 悬停时不显示节点背景，保留布局圆角以免覆盖默认命中层 */
 .file-tree-node:not(.file-node-root):not(.active):has(> .file-node-content:hover) > .file-node-background {
     background-color: transparent;
 }
 
-/* Active background */
+/* 点击后节点的背景色（不再使用单独背景层） */
 .file-tree-node.active > .file-node-background {
-    background-color: var(--hover-color);
+    /* background-color: var(--hover-color); */
+    background-color: transparent;
+}
+
+/* 节点激活背景替换单独背景层 */
+.file-library-node.file-library-file-node.active > .file-node-content {
+    background: var(--hover-color);
+    border-radius: 8px;
+}
+
+/* 文件树换行 */
+.file-library-node.file-library-file-node > .file-node-content > .file-node-title {
+    min-width: 0;
+    white-space: normal !important;
+    overflow-wrap: anywhere;
+    word-break: break-all;
 }
 
 /* Text slide on hover */
@@ -2156,15 +2171,18 @@ a:hover {
 /* Label */
 .outline-content li .outline-label {
     display: inline-block;
+    box-sizing: border-box;
+    max-width: calc(100% - 16px);
+    vertical-align: top;
     border-radius: 4px;
     padding: 7px 7px 7px 8px;
     font-size: 14px !important;
     line-height: 1.2;
     transition: color 0.12s ease-out;
-    overflow-wrap: normal;
-    word-wrap: normal;
-    word-break: keep-all;
-    white-space: nowrap;
+    overflow-wrap: anywhere;
+    word-wrap: break-word;
+    word-break: normal;
+    white-space: normal;
     text-decoration: none;
 }
 
@@ -2659,6 +2677,13 @@ li > .outline-item-active::before,
 .mac-os #file-library-search-panel,
 .mac-seamless-mode #file-library-search-panel {
     top: 0 !important;
+}
+
+.mac-os #typora-sidebar.active-tab-outline .sidebar-tabs,
+.mac-seamless-mode #typora-sidebar.active-tab-outline .sidebar-tabs,
+.mac-os.active-tab-outline .sidebar-tabs,
+.mac-seamless-mode.active-tab-outline .sidebar-tabs {
+    border-bottom: 0.5px solid var(--border-color-15);
 }
 
 .mac-os #sidebar-content:hover #file-library,
