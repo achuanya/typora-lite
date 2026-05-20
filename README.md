@@ -12,6 +12,12 @@
 
 <img width="1389" height="888" alt="Snipaste_2026-05-17_13-59-35" src="https://github.com/user-attachments/assets/54c89ece-2ac5-4ab1-b8a4-ab01ba6ec5f1" /><img width="1389" height="888" alt="Snipaste_2026-05-17_14-00-23" src="https://github.com/user-attachments/assets/96836b53-e286-4509-945a-5281eb20efb2" />
 
+## 预览视频
+
+**文件树：**
+
+https://github.com/user-attachments/assets/687dfe46-18fd-42f4-a03a-a9f85209f7e2
+
 
 
 ## 使用
