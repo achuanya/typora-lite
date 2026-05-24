@@ -37,6 +37,26 @@ body {
     font-family: var(--font-sans);
 }
 
+/* cursors */
+a {
+    cursor: default;
+}
+.menu-item-container a.menu-style-btn {
+    cursor: default;
+}
+table {
+    cursor: text;
+}
+.outline-label {
+    cursor: default;
+}
+.info-panel-tab {
+    cursor: default;
+}
+.sidebar-footer-item {
+    cursor: default;
+}
+
 /* =========================================
    2. CSS 变量
    ========================================= */
@@ -276,6 +296,11 @@ body {
     border-radius: 12px;
 }
 
+/* 字数统计透明的调低 */
+.typora-node.no-collapse-outline.allow-file-tree-scroll.unibody-window.show-footer.os-windows.os-windows-10.hide-br-and-line-break.typora-maxmized.ty-show-word-count.pin-outline #footer-word-count-info {
+    background: rgba(250, 249, 245, 0.88)!important;
+}
+
 .menu-item-container a.menu-style-btn {
     background: none!important;
 }
@@ -414,6 +439,28 @@ li.folder-menu-item.file-action-item.selected-folder-menu-item:hover > a {
 /* 隐藏拼写检查的滚动条 */
 .ty-lang-list::-webkit-scrollbar {
     display: none!important;
+}
+
+/* 编辑区底栏 */
+.typora-node.pin-outline:not(.megamenu-opened):not(.typora-sourceview-on) footer.ty-footer {
+    border-radius: 66px;
+}
+
+.typora-node.pin-outline:not(.megamenu-opened):not(.typora-sourceview-on) footer.ty-footer {
+    left: calc(var(--sidebar-width) + 24px);
+    transition: .3s;
+
+    z-index: 20;
+
+    color: rgba(19, 19, 20, 0.72);
+    background: rgba(250, 249, 245, 0.72);
+
+    backdrop-filter: blur(18px) saturate(118%);
+    -webkit-backdrop-filter: blur(18px) saturate(118%);
+
+    border-top: 1px solid rgba(19, 19, 20, 0.10);
+
+    box-shadow: none;
 }
 
 /* =========================================
@@ -3196,6 +3243,14 @@ li > .outline-item-active::before,
     margin-top: 12px;
 }
 
+/*最近打开文件的cursor*/
+.megamenu-menu-panel table tr {
+    cursor: default!important;
+}
+#recent-document-table {
+    cursor: default!important;
+}
+
 .unibody-window .megamenu-menu-panel {
     margin-bottom: 22px;
     padding: 20px 22px;
@@ -3534,9 +3589,9 @@ li > .outline-item-active::before,
         transform 0.18s cubic-bezier(0.22, 1, 0.36, 1) !important;
 }
 
-.unibody-window #recent-document-table tbody tr:hover {
+/* .unibody-window #recent-document-table tbody tr:hover {
     transform: translateX(2px);
-}
+} */
 
 .unibody-window #recent-document-table tbody tr:hover td {
     background: var(--hover-color) !important;
