@@ -3,6 +3,62 @@
    整理版本：优化结构 / 无损原样
    ========================================= */
 
+@font-face {
+    font-family: "Anthropic Serif Web Text";
+    src: url("./claude-fonts/c66fc489e-C-BHYa_K.ttf") format("truetype");
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Anthropic Sans Web Text";
+    src: url("./claude-fonts/cc27851ad-CFxw3nG7.ttf") format("truetype");
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Anthropic Mono Variable";
+    src: url("./claude-fonts/c5dbe0935-B88FVziN.ttf") format("truetype");
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Noto Serif SC";
+    src: url("./claude-fonts/NotoSerifSC-VariableFont_wght.ttf") format("truetype");
+    font-weight: 200 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Noto Sans";
+    src: url("./claude-fonts/NotoSans-VariableFont_wdth,wght.ttf") format("truetype");
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Noto Sans";
+    src: url("./claude-fonts/NotoSans-Italic-VariableFont_wdth,wght.ttf") format("truetype");
+    font-weight: 100 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "UnifrakturMaguntia";
+    src: url("./claude-fonts/UnifrakturMaguntia-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
 /* =========================================
    1. 全局重置与基础
    ========================================= */
@@ -1916,7 +1972,8 @@ a:hover {
 
 @font-face {
     font-family: "ClaudeRootCJKLogo";
-    src: local("站酷小薇LOGO体");
+    src: local("站酷小薇LOGO体"),
+         url("./claude-fonts/ZhanKuXiaoLOGOTi-2.otf") format("opentype");
     unicode-range: U+2E80-2EFF, U+3000-303F, U+3400-4DBF, U+4E00-9FFF, U+F900-FAFF, U+FF00-FFEF;
 }
 
@@ -3505,7 +3562,7 @@ li > .outline-item-active::before,
 
 /* --- 一体化菜单细节修正：字体、菜单状态、打开/导出交互、偏好外框 --- */
 .unibody-window {
-    --claude-mega-font: "Anthropic Sans Web Text", "Noto Sans SC", "Noto Sanc SC", system-ui, "Segoe UI", sans-serif;
+    --claude-mega-font: "Anthropic Sans Web Text", "Noto Sans", "Noto Sans SC", system-ui, "Segoe UI", sans-serif;
     --claude-mega-slider-bg:
         linear-gradient(112deg, transparent 0 18%, rgba(176, 184, 174, 0.10) 19%, transparent 31%),
         linear-gradient(150deg, transparent 0 54%, rgba(214, 209, 194, 0.14) 55%, transparent 68%),
