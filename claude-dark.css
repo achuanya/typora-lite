@@ -2538,7 +2538,8 @@ a:hover {
 .outline-item-active:hover > .outline-label,
 .outline-item-active > .outline-item:hover,
 .outline-item-active > .outline-item:hover > .outline-label {
-    background: var(--hover-color) !important;
+    background: transparent !important;
+    background-color: transparent !important;
 }
 
 .outline-item-active > .outline-label,
