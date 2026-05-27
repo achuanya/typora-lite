@@ -2500,9 +2500,9 @@ a:hover {
     z-index: 30;
 }
 
-/* 顶级第一个节点的连接线起点归零 */
+/* 树状连接线: 已全部禁用，仅靠缩进展示层级 */
 .outline-content > li:first-of-type::before {
-    top: 0;
+    display: none;
 }
 
 /* 子菜单设置 */
@@ -2589,119 +2589,14 @@ a:hover {
     padding-left: 12px;
 }
 
-/* ----- 树状结构连线绘制 ----- */
+/* ----- 树状连接线: 已全部禁用，仅靠缩进展示层级 ----- */
 
-/* 画出指向当前节点的水平和垂直折线 (L型线) */
-.outline-content li .outline-item::before {
-    content: '';
-    position: absolute;
-    z-index: 38;
-    left: -10px;
-    top: -27.5px;
-    width: 10px;
-    height: calc(50% + 28px);
-    background: transparent;
-    border-left: 1px solid var(--LOGO-color);
-    border-bottom: 1px solid var(--LOGO-color);
-}
-
-.os-windows .outline-content li .outline-item::before {
-    top: -28.5px;
-}
-
-/* 顶级第一个节点的树状线特殊处理 (只有下半部分) */
-.outline-content > li:first-of-type > .outline-item::before {
-    top: calc(50% - 1px);
-    height: calc(50% + 15px);
-    border-left: 1px solid var(--LOGO-color);
-    border-top: 1px solid var(--LOGO-color);
-    border-bottom: none;
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 0;
-}
-
-/* 子节点中的首个节点，以及顶级第二个节点的连线高度微调 */
-.outline-children > li:first-child > .outline-item::before,
-.outline-content > li:nth-child(2) > .outline-item::before {
-    top: -11px;
-    height: calc(50% + 12px);
-}
-
-.os-windows .outline-children > li:first-child > .outline-item::before,
-.os-windows .outline-content > li:nth-child(2) > .outline-item::before {
-    top: -13px;
-    height: calc(50% + 13px);
-}
-
-.no-collapse-outline .outline-children > li:first-child > .outline-item::before,
-.no-collapse-outline .outline-content > li:nth-child(2) > .outline-item::before {
-    top: -8px;
-    height: calc(50% + 8px);
-}
-
-/* 列表最后项的连线左下角增加微小圆角 */
-.outline-content > li:last-child > .outline-item::before,
-.outline-children > li:last-child > .outline-item::before {
-    border-bottom-left-radius: 3px;
-}
-
-/* 画出贯穿父节点下属所有子节点的垂直主干线 (I型线) */
-.no-collapse-outline .outline-item-wrapper > .outline-children::before,
-.outline-item-open > .outline-children::before {
-    content: '';
-    position: absolute;
-    left: -21px;
-    top: -26px;
-    width: 1px;
-    height: calc(100% + 12px);
-    background: transparent;
-    border-left: 1px solid var(--LOGO-color);
-}
-
-.no-collapse-outline .outline-item-wrapper > .outline-children::before {
-    left: -24px;
-}
-
-/* 针对第一个顶层节点的主干线起始点微调 */
-.no-collapse-outline .outline-content > li.outline-item-wrapper:first-child > .outline-children::before,
-.outline-content > li.outline-item-open:first-child > .outline-children::before {
-    top: -15px;
-}
-
-/* 隐藏部分不需要的连线 */
-.outline-content > li:only-of-type > .outline-item::before,
-.no-collapse-outline .outline-item-wrapper:last-of-type > .outline-children::before,
-.no-collapse-outline .outline-children > li.outline-item-wrapper:last-child > .outline-children::before,
-.outline-item-open:last-of-type > .outline-children::before,
-.outline-children > li.outline-item-open:last-child > .outline-children::before {
-    display: none;
-}
-
-/* 如果大纲只有一个顶级节点，整体向左微调 */
-.outline-content > li:only-of-type {
-    margin-left: -8px;
+.outline-item::before,
+.outline-children::before {
+    display: none !important;
 }
 
 /* ----- 悬停与激活状态下的动态效果 ----- */
-
-/* 节点处于激活状态时，缩短水平线 */
-li > .outline-item-active:before,
-.outline-item-active > .outline-item::before {
-    width: 7px !important;
-}
-
-/* 激活节点向右移动并增加左内边距 */
-li > .outline-item-active,
-.outline-item-active > .outline-item {
-    margin-left: 4px !important;
-    padding-left: 7px !important;
-}
-
-/* 调整激活节点水平连接线的位置保持相连 */
-li > .outline-item-active::before,
-.outline-item-active > .outline-item::before {
-    left: -7px !important;
-}
 
 /* 悬停时只改变标题文字颜色，激活节点仍保留高亮 */
 .outline-item:hover,
