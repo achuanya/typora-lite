@@ -1429,10 +1429,17 @@ a:hover {
     text-underline-offset: 2px;
 }
 
+#write a {
+    color: var(--code-font-color) !important;
+    text-decoration: none;
+    transition: none !important;
+}
+
 #write a:hover {
-    color: #D4B06D;
+    color: var(--code-font-color) !important;
     text-decoration: underline;
     text-underline-offset: 2px;
+    transition: none !important;
 }
 
 /* =========================================
@@ -1771,7 +1778,8 @@ a:hover {
 
 /* 激活项标题颜色 */
 .file-list-item.active {
-    color: #D4B06D!important;
+    color: var(--code-font-color) !important;
+    transition: none !important;
 }
 
 #typora-sidebar #sidebar-loading-template {
@@ -1892,10 +1900,10 @@ a:hover {
     word-break: break-all;
 }
 
-/* Instant hover — no transition */
 #file-library-tree .file-library-file-node > .file-node-content:hover .file-node-icon,
 .file-tree-node:not(.file-node-root) > .file-node-content:hover .file-node-title {
-    color: #D4B06D;
+    color: var(--code-font-color) !important;
+    transition: none !important;
 }
 
 /* 节点文字的字重 */
@@ -1908,9 +1916,9 @@ a:hover {
     line-height: 22px;
 }
 
-/* 文件树节点激活项的字体颜色 */
 .file-library-node.file-tree-node.file-library-file-node.active .file-node-title {
-    color: #D4B06D!important;
+    color: var(--code-font-color) !important;
+    transition: none !important;
 }
 
 /* @font-face {
@@ -1950,7 +1958,7 @@ a:hover {
 > .file-tree-node.file-node-root
 > .file-node-children
 > .file-tree-node {
-    --claude-folder-expanded-title-color: #D4B06D;
+    --claude-folder-expanded-title-color: var(--code-font-color);
 }
 
 #file-library-tree
@@ -1959,7 +1967,7 @@ a:hover {
 > .file-tree-node
 > .file-node-content
 > .file-node-icon.fa-folder::before {
-    color: #D4B06D !important;
+    color: var(--code-font-color) !important;
 }
 
 /* 第 2 层文件夹图标 */
@@ -1969,7 +1977,7 @@ a:hover {
 > .file-tree-node
 > .file-node-children
 > .file-tree-node {
-    --claude-folder-expanded-title-color: #D4B06D;
+    --claude-folder-expanded-title-color: var(--code-font-color);
 }
 
 #file-library-tree
@@ -1980,7 +1988,7 @@ a:hover {
 > .file-tree-node
 > .file-node-content
 > .file-node-icon.fa-folder::before {
-    color: #D4B06D !important;
+    color: var(--code-font-color) !important;
 }
 
 /* 第 3 层文件夹图标 */
@@ -1992,7 +2000,7 @@ a:hover {
 > .file-tree-node
 > .file-node-children
 > .file-tree-node {
-    --claude-folder-expanded-title-color: #D4B06D;
+    --claude-folder-expanded-title-color: var(--code-font-color);
 }
 
 #file-library-tree
@@ -2005,7 +2013,7 @@ a:hover {
 > .file-tree-node
 > .file-node-content
 > .file-node-icon.fa-folder::before {
-    color: #D4B06D !important;
+    color: var(--code-font-color) !important;
 }
 
 /* 第 4 层及更深文件夹图标 */
@@ -2019,7 +2027,7 @@ a:hover {
 > .file-tree-node
 > .file-node-children
 .file-tree-node {
-    --claude-folder-expanded-title-color: #D4B06D;
+    --claude-folder-expanded-title-color: var(--code-font-color);
 }
 
 #file-library-tree
@@ -2034,7 +2042,7 @@ a:hover {
 .file-tree-node
 > .file-node-content
 > .file-node-icon.fa-folder::before {
-    color: #D4B06D !important;
+    color: var(--code-font-color) !important;
 }
 
 #file-library-tree
@@ -2082,7 +2090,7 @@ a:hover {
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background-color: #D4B06D;
+    background-color: var(--code-font-color);
 }
 
 /* ---------- 7.8 搜索 ---------- */
@@ -2502,7 +2510,6 @@ a:hover {
     padding: 7px 7px 7px 8px;
     font-size: 14px !important;
     line-height: 1.2;
-    transition: color 0.12s ease-out;
     overflow-wrap: anywhere;
     word-wrap: break-word;
     word-break: normal;
@@ -2549,8 +2556,9 @@ a:hover {
 }
 
 .outline-item:hover > .outline-label {
-    color: #D4B06D !important;
+    color: var(--code-font-color) !important;
     text-decoration: none !important;
+    transition: none !important;
 }
 
 .outline-item-active,
@@ -2567,7 +2575,8 @@ a:hover {
 .outline-item-active:hover > .outline-label,
 .outline-item-active > .outline-item > .outline-label,
 .outline-item-active > .outline-item:hover > .outline-label {
-    color: #D4B06D !important;
+    color: var(--code-font-color) !important;
+    transition: none !important;
 }
 
 /* ----- 过滤/搜索大纲时的表现 ----- */
