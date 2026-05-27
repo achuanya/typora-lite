@@ -371,18 +371,23 @@ body {
 
 /*--- Selection ---*/
 ::selection {
-    background: rgba(142, 164, 255, 0.34);
-    color: #FAF9F5;
+    background-color: color-mix(in srgb, var(--code-font-color) 20%, transparent) !important;
+    color: inherit;
+}
+
+#write ::selection {
+    background-color: color-mix(in srgb, var(--code-font-color) 20%, transparent) !important;
+    color: inherit;
 }
 
 .md-fences .CodeMirror-selected,
 .CodeMirror-selected,
 .md-fences .CodeMirror-selectedtext {
-    background-color: #1e3a5f !important;
+    background-color: color-mix(in srgb, var(--code-font-color) 20%, transparent) !important;
 }
 
 .md-fences .CodeMirror-focused .CodeMirror-selected {
-    background-color: #1e3a5f !important;
+    background-color: color-mix(in srgb, var(--code-font-color) 20%, transparent) !important;
 }
 
 /*--- Context menu ---*/
@@ -1435,15 +1440,14 @@ blockquote ol, blockquote ul {
 .md-math-container ::selection,
 .md-math-block .MathJax ::selection,
 .md-math-block mjx-container ::selection {
-    background: #3a2f2b;
-    color: #FAF9F5;
+    background-color: color-mix(in srgb, var(--code-font-color) 20%, transparent) !important;
+    color: inherit;
 }
 
 .md-math-block .CodeMirror-selected,
 .md-math-block .CodeMirror-selectedtext,
 .md-math-block .md-rawblock-input::selection {
-    background-color: #3a2f2b !important;
-    color: #FAF9F5 !important;
+    background-color: color-mix(in srgb, var(--code-font-color) 20%, transparent) !important;
 }
 
 .md-rawblock-control.md-rawblock-before,

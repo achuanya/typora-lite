@@ -615,8 +615,23 @@ li.folder-menu-item.file-action-item.selected-folder-menu-item:hover > a {
 
 /* 修改普通文本的选中高亮颜色 */
 ::selection {
-    background: rgba(142, 164, 255, 0.30);
-    color: #131314;
+    background-color: color-mix(in srgb, var(--code-font-color) 20%, transparent) !important;
+    color: inherit;
+}
+
+#write ::selection {
+    background-color: color-mix(in srgb, var(--code-font-color) 20%, transparent) !important;
+    color: inherit;
+}
+
+.md-fences .CodeMirror-selected,
+.CodeMirror-selected,
+.md-fences .CodeMirror-selectedtext {
+    background-color: color-mix(in srgb, var(--code-font-color) 20%, transparent) !important;
+}
+
+.md-fences .CodeMirror-focused .CodeMirror-selected {
+    background-color: color-mix(in srgb, var(--code-font-color) 20%, transparent) !important;
 }
 
 /* ---------- Typora 隐藏加粗/斜体星号标记 ---------- */
